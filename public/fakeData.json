@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "Title": "To Kill a Mockingbird",
+    "Author": "Harper Lee",
+    "Genre": "Classic Fiction",
+    "ISBN": "9780061120084",
+    "Copies": 4,
+    "Availability": "Available"
+  },
+  {
+    "id": 2,
+    "Title": "1984",
+    "Author": "George Orwell",
+    "Genre": "Dystopian",
+    "ISBN": "9780451524935",
+    "Copies": 2,
+    "Availability": "Available"
+  },
+  {
+    "id": 3,
+    "Title": "The Great Gatsby",
+    "Author": "F. Scott Fitzgerald",
+    "Genre": "Classic",
+    "ISBN": "9780743273565",
+    "Copies": 0,
+    "Availability": "Not Available"
+  },
+  {
+    "id": 4,
+    "Title": "A Brief History of Time",
+    "Author": "Stephen Hawking",
+    "Genre": "Science",
+    "ISBN": "9780553380163",
+    "Copies": 3,
+    "Availability": "Available"
+  },
+  {
+    "id": 5,
+    "Title": "Pride and Prejudice",
+    "Author": "Jane Austen",
+    "Genre": "Romance",
+    "ISBN": "9780141040349",
+    "Copies": 1,
+    "Availability": "Available"
+  },
+  {
+    "id": 6,
+    "Title": "The Alchemist",
+    "Author": "Paulo Coelho",
+    "Genre": "Adventure",
+    "ISBN": "9780062315007",
+    "Copies": 5,
+    "Availability": "Available"
+  }
+]
