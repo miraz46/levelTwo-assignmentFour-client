@@ -13,6 +13,7 @@ import EditBook from './Components/EditBook';
 import { ToastContainer } from 'react-toastify';
 import BorrowBook from './Components/BorrowBook';
 import AddBook from './Components/Pages/AddBook';
+import SingleBook from './Components/Pages/SingleBook';
 
 
 
@@ -25,7 +26,6 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-
         Component: AllBook,
         loader: () => fetch('/fakeData.json')
       },
@@ -39,13 +39,8 @@ const router = createBrowserRouter([
         Component: AddBook
       },
       {
-        path: "/borrow-summary",
-        Component: BorrowSummary,
-        loader: () => fetch('/fakeData.json')
-      },
-      {
-        path: "/borrow-summary/:id",
-        Component: BorrowBook,
+        path: "/books/:id",
+        Component: SingleBook,
         loader: () => fetch('/fakeData.json')
       },
       {
@@ -53,6 +48,18 @@ const router = createBrowserRouter([
         Component: EditBook,
         loader: () => fetch('/fakeData.json')
       },
+      {
+        path: "/borrow/:bookId",
+        Component: BorrowBook,
+        loader: () => fetch('/fakeData.json')
+      },
+      {
+        path: "/borrow-summary",
+        Component: BorrowSummary,
+        loader: () => fetch('/fakeData.json')
+      },
+      
+      
     ]
   },
 ]);

@@ -1,10 +1,12 @@
 import { Link } from "react-router";
+import { toast } from "react-toastify";
 
 
 const BookCard = ({ book }) => {
     const { id, Title, Author, Genre, ISBN, Copies, Availability } = book;
     const handleDelete = (book) => {
         console.log(book);
+        toast.error("Book Deleted Successfully")
     }
 
 
@@ -12,16 +14,17 @@ const BookCard = ({ book }) => {
     return (
 
         <tbody>
-            {/* row 1 */}
             <tr className="hover:bg-base-300 text-center">
                 <th>{id}</th>
-                <td>{Title}</td>
+                <Link to={`/books/${id}`} className="text-blue-600 hover:underline">
+                    {Title}
+                </Link>
                 <td>{Author}</td>
                 <td>{Genre}</td>
                 <td>{ISBN}</td>
                 <td>{Copies}</td>
                 <td>{Availability}</td>
-                <td className="flex gap-3 justify-center">
+                <td className="flex gap-3 justify-center hover:bg-transparent">
                     {/* Button Edit */}
                     <Link to={`/edit-book/${id}`}><button className="btn btn-warning">Edit Book</button></Link>
                     {/* Button Delete */}
@@ -52,7 +55,7 @@ const BookCard = ({ book }) => {
                         </div>
                     </dialog>
                     {/* Button Borrow */}
-                    <Link to={`/borrow-summary/${id}`}><button className="btn btn-info">Borrow Book</button></Link>
+                    <Link to={`/borrow/${id}`}><button className="btn btn-info">Borrow Book</button></Link>
                 </td>
             </tr>
 

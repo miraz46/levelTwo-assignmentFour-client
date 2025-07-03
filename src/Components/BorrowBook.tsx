@@ -6,9 +6,9 @@ const BorrowBook = () => {
 
     const Navigate = useNavigate()
     const books = useLoaderData();
-    const { id } = useParams();
-    const bookId = parseInt(id);
-    const book = books.find(book => book.id === bookId);
+    const { bookId } = useParams();
+    const id = parseInt(bookId);
+    const book = books.find(book => book.id === id);
     const { Copies, Availability } = book;
 
     const handleEditBook = (e) => {
