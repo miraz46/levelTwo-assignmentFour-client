@@ -1,56 +1,137 @@
 [
   {
-    "id": 1,
-    "Title": "To Kill a Mockingbird",
-    "Author": "Harper Lee",
-    "Genre": "Classic Fiction",
-    "ISBN": "9780061120084",
-    "Copies": 4,
-    "Availability": "Available"
+    "title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "genre": "Fiction",
+    "isbn": "9780061122415",
+    "description": "A philosophical novel about following one's dreams.",
+    "copies": 5,
+    "available": true
   },
   {
-    "id": 2,
-    "Title": "1984",
-    "Author": "George Orwell",
-    "Genre": "Dystopian",
-    "ISBN": "9780451524935",
-    "Copies": 2,
-    "Availability": "Available"
+    "title": "Sapiens",
+    "author": "Yuval Noah Harari",
+    "genre": "History",
+    "isbn": "9780062316097",
+    "description": "A brief history of humankind.",
+    "copies": 0,
+    "available": false
   },
   {
-    "id": 3,
-    "Title": "The Great Gatsby",
-    "Author": "F. Scott Fitzgerald",
-    "Genre": "Classic",
-    "ISBN": "9780743273565",
-    "Copies": 0,
-    "Availability": "Not Available"
+    "title": "Atomic Habits",
+    "author": "James Clear",
+    "genre": "Self-Help",
+    "isbn": "9780735211292",
+    "description": "A guide to building good habits.",
+    "copies": 3,
+    "available": true
   },
   {
-    "id": 4,
-    "Title": "A Brief History of Time",
-    "Author": "Stephen Hawking",
-    "Genre": "Science",
-    "ISBN": "9780553380163",
-    "Copies": 3,
-    "Availability": "Available"
+    "title": "1984",
+    "author": "George Orwell",
+    "genre": "Dystopian",
+    "isbn": "9780451524935",
+    "description": "A chilling dystopia of surveillance and control.",
+    "copies": 2,
+    "available": true
   },
   {
-    "id": 5,
-    "Title": "Pride and Prejudice",
-    "Author": "Jane Austen",
-    "Genre": "Romance",
-    "ISBN": "9780141040349",
-    "Copies": 1,
-    "Availability": "Available"
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "genre": "Classic",
+    "isbn": "9780060935467",
+    "description": "A novel on racism and injustice.",
+    "copies": 0,
+    "available": false
   },
   {
-    "id": 6,
-    "Title": "The Alchemist",
-    "Author": "Paulo Coelho",
-    "Genre": "Adventure",
-    "ISBN": "9780062315007",
-    "Copies": 5,
-    "Availability": "Available"
+    "title": "The Power of Now",
+    "author": "Eckhart Tolle",
+    "genre": "Spirituality",
+    "isbn": "9781577314806",
+    "description": "A guide to spiritual enlightenment.",
+    "copies": 4,
+    "available": true
+  },
+  {
+    "title": "The Subtle Art of Not Giving a F*ck",
+    "author": "Mark Manson",
+    "genre": "Self-Help",
+    "isbn": "9780062457714",
+    "description": "A counterintuitive approach to living a good life.",
+    "copies": 6,
+    "available": true
+  },
+  {
+    "title": "Brave New World",
+    "author": "Aldous Huxley",
+    "genre": "Science Fiction",
+    "isbn": "9780060850524",
+    "description": "A futuristic vision of a controlled society.",
+    "copies": 1,
+    "available": true
+  },
+  {
+    "title": "Educated",
+    "author": "Tara Westover",
+    "genre": "Memoir",
+    "isbn": "9780399590504",
+    "description": "A memoir of a woman who leaves her survivalist family.",
+    "copies": 0,
+    "available": false
+  },
+  {
+    "title": "Thinking, Fast and Slow",
+    "author": "Daniel Kahneman",
+    "genre": "Psychology",
+    "isbn": "9780374533557",
+    "description": "Insights into how our minds work.",
+    "copies": 3,
+    "available": true
+  },
+  {
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "genre": "Classic",
+    "isbn": "9780316769488",
+    "description": "A story of teenage angst and rebellion.",
+    "copies": 2,
+    "available": true
+  },
+  {
+    "title": "Dune",
+    "author": "Frank Herbert",
+    "genre": "Science Fiction",
+    "isbn": "9780441172719",
+    "description": "A science fiction saga set on a desert planet.",
+    "copies": 5,
+    "available": true
+  },
+  {
+    "title": "The Road",
+    "author": "Cormac McCarthy",
+    "genre": "Post-Apocalyptic",
+    "isbn": "9780307387899",
+    "description": "A bleak tale of a father and son's survival.",
+    "copies": 0,
+    "available": false
+  },
+  {
+    "title": "Becoming",
+    "author": "Michelle Obama",
+    "genre": "Biography",
+    "isbn": "9781524763138",
+    "description": "The inspiring memoir of the former First Lady.",
+    "copies": 7,
+    "available": true
+  },
+  {
+    "title": "The Shining",
+    "author": "Stephen King",
+    "genre": "Horror",
+    "isbn": "9780307743657",
+    "description": "A horror classic set in an isolated hotel.",
+    "copies": 0,
+    "available": false
   }
 ]

@@ -1,17 +1,22 @@
 import { Link, useLoaderData, useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
+import type { IBook } from "../interfaces/types";
 
 
 const BorrowBook = () => {
 
     const Navigate = useNavigate()
-    const books = useLoaderData();
+    const books = useLoaderData() as IBook[];
     const { bookId } = useParams();
-    const id = parseInt(bookId);
+    const id = Number(bookId);
     const book = books.find(book => book.id === id);
-    const { Copies, Availability } = book;
 
-    const handleEditBook = (e) => {
+    if (!book) {
+        return <div className="text-center text-red-600 mt-10">Book not found.</div>;
+    }
+    const { copies } = book;
+
+    const handleBorrowBook = (e) => {
         e.preventDefault();
         const form = e.target;
         const quantity = form.quantity.value;
@@ -20,20 +25,20 @@ const BorrowBook = () => {
         const borrowedBook = { quantity, date }
         toast.success("Borrow Book Successfully")
         Navigate("/")
-        console.log(borrowedBook);
+        console.log(typeof quantity, borrowedBook);
     }
     return (
         <div className="hero bg-base-200 min-h-[70vh] ">
             <div className="hero-content ">
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                     <h2 className="mx-auto mt-2 font-bold text-5xl">Edit Book</h2>
-                    <form onSubmit={handleEditBook} className="card-body">
+                    <form onSubmit={handleBorrowBook} className="card-body">
                         <div className="form-control">
                             {/* Quantity */}
                             <label className="label">
                                 <span className="label-text">Quantity</span>
                             </label>
-                            <input name="quantity" type="number" placeholder="quantity" className="input input-bordered" defaultValue={Copies} required />
+                            <input name="quantity" type="number" placeholder="quantity" className="input input-bordered" defaultValue={copies} required />
                         </div>
                         {/* Due Date */}
                         <div className="form-control">

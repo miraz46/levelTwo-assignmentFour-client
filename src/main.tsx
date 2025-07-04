@@ -14,6 +14,9 @@ import { ToastContainer } from 'react-toastify';
 import BorrowBook from './Components/BorrowBook';
 import AddBook from './Components/Pages/AddBook';
 import SingleBook from './Components/Pages/SingleBook';
+import { Provider } from 'react-redux';
+import New from './Components/New';
+import { store } from './redux/store';
 
 
 
@@ -26,13 +29,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: AllBook,
-        loader: () => fetch('/fakeData.json')
+        Component: AllBook
       },
       {
         path: "/books",
-        Component: AllBook,
-        loader: () => fetch('/fakeData.json')
+        Component: AllBook
       },
       {
         path: "/create-book",
@@ -58,8 +59,13 @@ const router = createBrowserRouter([
         Component: BorrowSummary,
         loader: () => fetch('/fakeData.json')
       },
-      
-      
+      {
+        path: "/practice",
+        Component: New,
+        loader: () => fetch('/fakeData.json')
+      },
+
+
     ]
   },
 ]);
@@ -68,7 +74,9 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router} />
-    <ToastContainer />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+      <ToastContainer />
+    </Provider>
   </StrictMode>,
 )

@@ -1,23 +1,22 @@
-import { useLoaderData } from "react-router";
 import BookCard from "../BookCard";
-import { Helmet } from "react-helmet";
+import { useGetBooksQuery } from "../../redux/api/baseApi";
+import type { IBook } from "../../interfaces/types";
 
 
 const AllBook = () => {
 
-    const allBooks = useLoaderData();
+    const { data = [], isLoading, isError } = useGetBooksQuery();
+    if (isLoading) return <p className="text-center mt-10">Loading…</p>;
+    if (isError) return <p className="text-red-600 text-center mt-10">Failed to load books.</p>;
+
     return (
         <div>
-            <Helmet>
-                <title>All Book</title>
-            </Helmet>
             <h2 className="text-center my-4 mt-2 font-bold text-5xl">All Books</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     {/* head */}
                     <thead >
                         <tr className="text-center">
-                            <th>Id</th>
                             <th>Title</th>
                             <th>Author</th>
                             <th>Genre</th>
@@ -29,7 +28,7 @@ const AllBook = () => {
                         </tr>
                     </thead>
                     {
-                        allBooks.map((book, index) => (<BookCard key={index} book={book}></BookCard>))
+                        !isLoading && data.map((book: IBook) => (<BookCard key={book._id} book={book}></BookCard>))
                     }
                 </table>
 
