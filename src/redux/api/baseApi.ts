@@ -3,7 +3,7 @@ import type { IBook } from '../../interfaces/types';
 
 export const baseApi = createApi({
     reducerPath: "baseApi",
-    baseQuery: fetchBaseQuery({ baseUrl: process.env.VITE_API_URL }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://library-management-system-backend-neon.vercel.app' }),
     tagTypes: ["book"],
     endpoints: (builder) => ({
         // Get All Books
