@@ -1,34 +1,41 @@
-import { useLoaderData } from "react-router";
-import BookCard from "../BookCard";
 import { Helmet } from "react-helmet";
+import { useBorrowBooksQuery } from "../../redux/api/baseApi";
+import BorrowBookCard from "../BorrowBookCard";
 
+
+
+export type BorrowSummaryItem = {
+    title: string;
+    isbn: string;
+    totalQuantity: number;
+};
 const BorrowSummary = () => {
-    const allBooks = useLoaderData();
+    const { data, isLoading, isError } = useBorrowBooksQuery(undefined);
+    if (isLoading) return <p className="text-center mt-10">Loading…</p>;
+    if (isError || !data) return <p className="text-center text-red-600 mt-10">Failed to load borrow summary.</p>;
+    const books: BorrowSummaryItem[] = data.data ?? [];
     return (
-         <div>
+        <div>
             <Helmet>
                 <title>Borrow Summary</title>
             </Helmet>
-            <h2 className="text-center my-4 mt-2 font-bold text-5xl">All Books</h2>
+            <h2 className="text-center my-4 mt-2 font-bold text-5xl">Borrow Book Summary</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     {/* head */}
                     <thead >
                         <tr className="text-center">
-                            <th>Id</th>
-                            <th>Title</th>
-                            <th>Author</th>
-                            <th>Genre</th>
+                            <th>Book Title</th>
                             <th>ISBN</th>
-                            <th>Copies</th>
-                            <th>Availability</th>
-                            <th>Action</th>
+                            <th>Total Quantity Borrowed</th>
 
                         </tr>
                     </thead>
-                    {
-                        allBooks.map((book, index) => (<BookCard key={index} book={book}></BookCard>))
-                    }
+                    <tbody>
+                        {books.map((book) => (
+                            <BorrowBookCard key={book.isbn} book={book} />
+                        ))}
+                    </tbody>
                 </table>
 
             </div>

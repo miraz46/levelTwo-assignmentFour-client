@@ -1,31 +1,40 @@
-import { Link, useLoaderData, useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import { toast } from "react-toastify";
-import type { IBook } from "../interfaces/types";
+import { useBorrowBookMutation, useGetSingleBooksQuery } from "../redux/api/baseApi";
 
 
 const BorrowBook = () => {
 
-    const Navigate = useNavigate()
-    const books = useLoaderData() as IBook[];
-    const { bookId } = useParams();
-    const id = Number(bookId);
-    const book = books.find(book => book.id === id);
-
-    if (!book) {
-        return <div className="text-center text-red-600 mt-10">Book not found.</div>;
+    const navigate = useNavigate();
+    const { bookId } = useParams<{ bookId: string }>();
+    const { data: singleBook, isLoading, isError } = useGetSingleBooksQuery(bookId as string);
+    const [borrowBook] = useBorrowBookMutation();
+    if (!bookId) {
+       
+        return <p>Book ID not found</p>;
     }
-    const { copies } = book;
+    if (isLoading) return <p className="text-center mt-10">Loading…</p>;
+    if (isError || !singleBook) return <p className="text-center text-red-600 mt-10">Book not found.</p>;
+    const availableCopies = singleBook.data.copies;
 
-    const handleBorrowBook = (e) => {
+    const handleBorrowBook = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const form = e.target;
-        const quantity = form.quantity.value;
-        const date = form.due_date.value;
+        const form = e.currentTarget;
 
-        const borrowedBook = { quantity, date }
-        toast.success("Borrow Book Successfully")
-        Navigate("/")
-        console.log(typeof quantity, borrowedBook);
+        const quantity = parseInt(form.quantity.value);
+        const dueDate = form.dueDate.value;
+        if (quantity > availableCopies) {
+            toast.error(`Only ${availableCopies} copies available.`)
+            return
+        }
+        try {
+            await borrowBook({ bookId, quantity, dueDate }).unwrap();
+            toast.success("Book borrowed successfully");
+            navigate("/borrow-summary");
+        } catch (err) {
+            toast.error("Failed to borrow book");
+            console.error(err);
+        }
     }
     return (
         <div className="hero bg-base-200 min-h-[70vh] ">
@@ -38,14 +47,14 @@ const BorrowBook = () => {
                             <label className="label">
                                 <span className="label-text">Quantity</span>
                             </label>
-                            <input name="quantity" type="number" placeholder="quantity" className="input input-bordered" defaultValue={copies} required />
+                            <input name="quantity" type="number" placeholder="quantity" className="input input-bordered" required />
                         </div>
                         {/* Due Date */}
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Due Date</span>
                             </label>
-                            <input name="due_date" type="date" placeholder="due_date" className="input input-bordered" required />
+                            <input name="dueDate" type="date" placeholder="dueDate" className="input input-bordered" required />
                         </div>
 
                         <div className="form-control mt-6 flex  justify-center gap-2">

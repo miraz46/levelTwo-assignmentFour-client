@@ -1,15 +1,18 @@
 import { Link } from "react-router";
 import { toast } from "react-toastify";
 import type { IBook } from "../interfaces/types";
+import { useDeleteBookMutation } from "../redux/api/baseApi";
 
 interface BookCardProps {
     book: IBook;
 }
 
 const BookCard = ({ book }: BookCardProps) => {
+    const [deleteBook] = useDeleteBookMutation();
     const { _id, title, author, genre, isbn, copies, available } = book;
-    const handleDelete = (book: IBook) => {
-        console.log(book);
+    const handleDelete = async () => {
+
+        await deleteBook(_id as string);
         toast.error("Book Deleted Successfully")
     }
 
@@ -31,7 +34,9 @@ const BookCard = ({ book }: BookCardProps) => {
 
                     {/* Button Edit */}
                     <Link to={`/edit-book/${_id}`}><button className="btn btn-warning">Edit Book</button></Link>
-
+                    
+                    {/* Button Borrow */}
+                    <Link to={`/borrow/${_id}`}><button className="btn btn-info">Borrow Book</button></Link>
                     {/* Button Delete */}
                     <button
                         className="btn btn-error"
@@ -48,7 +53,7 @@ const BookCard = ({ book }: BookCardProps) => {
                                 <form method="dialog">
                                     <button
                                         className="btn btn-error"
-                                        onClick={() => handleDelete(book)}
+                                        onClick={handleDelete}
                                     >
                                         Yes
                                     </button>
@@ -59,9 +64,6 @@ const BookCard = ({ book }: BookCardProps) => {
                             </div>
                         </div>
                     </dialog>
-                    
-                    {/* Button Borrow */}
-                    <Link to={`/borrow/${_id}`}><button className="btn btn-info">Borrow Book</button></Link>
                 </td>
             </tr>
 

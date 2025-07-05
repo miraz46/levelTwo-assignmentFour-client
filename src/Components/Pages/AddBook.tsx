@@ -6,15 +6,13 @@ import { useCreateBookMutation } from "../../redux/api/baseApi";
 
 
 const AddBook = () => {
-
     const Navigate = useNavigate();
     const [createBook] = useCreateBookMutation();
-
 
     const handleEditBook = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = e.target as HTMLFormElement;
-        const title = form.title.value;
+        const title = (form.elements.namedItem("title") as HTMLInputElement).value;
         const author = form.author.value;
         const genre = form.genre.value;
         const isbn = form.isbn.value;

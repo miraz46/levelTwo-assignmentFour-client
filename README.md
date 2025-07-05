@@ -1,69 +1,56 @@
-# React + TypeScript + Vite
+# 📘 Library Management System – Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+ **About** : A TypeScript-based REST API backend for managing books and borrow records in a library system. Built with Express.js, MongoDB, and Zod for validation.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**🛠 Tech Stack** :
+- 
+  - Node.js
+  - Express.js
+  - TypeScript
+  - MongoDB (Mongoose)
+  - Zod (Schema Validation)
+  - JWT (Authentication)
+  - CORS
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**🚀 Getting Started** :
+- 
+  **Prerequisites**
+  - Node.js (v18+)
+  - MongoDB Atlas or Local
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+ **Install Dependencies**
+  - cd backend
+  - npm install
+  
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Validation & Error Handling**:
+  - Schema-level validation using Mongoose
+  - API input validation
+  - Proper HTTP status codes and error responses
+**📌 Features**:
+- **✅ Book Management**:
+  - Create, update, delete books
+  - Get single or all books
+  - Filter, sort, and paginate
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **✅ Borrow Module**:
+  - Borrow books with due date and quantity
+  - View borrow summary (aggregated by book)
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **✅ Auth Middleware (Optional)**:
+  - Protect private routes using JWT
+  - give me this at readme.md format
+
+- **✅ User Interface**:
+  - Fully responsive (mobile/tablet/desktop)
+  - Toast notifications for actions
+  - Helmet for dynamic page titles
+
+- **📡 API Integration**:
+  - Uses RTK Query for API calls
+  - baseQuery is configured using VITE_API_URL
+  - Tags and cache invalidation enabled

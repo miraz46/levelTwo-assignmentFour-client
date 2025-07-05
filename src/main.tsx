@@ -13,10 +13,9 @@ import EditBook from './Components/EditBook';
 import { ToastContainer } from 'react-toastify';
 import BorrowBook from './Components/BorrowBook';
 import AddBook from './Components/Pages/AddBook';
-import SingleBook from './Components/Pages/SingleBook';
 import { Provider } from 'react-redux';
-import New from './Components/New';
 import { store } from './redux/store';
+import SingleBook from './Components/SingleBook';
 
 
 
@@ -41,31 +40,21 @@ const router = createBrowserRouter([
       },
       {
         path: "/books/:id",
-        Component: SingleBook,
-        loader: () => fetch('/fakeData.json')
+        Component: SingleBook
       },
       {
         path: "/edit-book/:id",
-        Component: EditBook,
-        loader: () => fetch('/fakeData.json')
+        Component: EditBook
       },
       {
         path: "/borrow/:bookId",
-        Component: BorrowBook,
-        loader: () => fetch('/fakeData.json')
+        Component: BorrowBook
       },
       {
         path: "/borrow-summary",
         Component: BorrowSummary,
-        loader: () => fetch('/fakeData.json')
+        
       },
-      {
-        path: "/practice",
-        Component: New,
-        loader: () => fetch('/fakeData.json')
-      },
-
-
     ]
   },
 ]);
