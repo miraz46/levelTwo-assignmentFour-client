@@ -1,4 +1,4 @@
-# 📘 Library Management System – Frontend
+# 📘 Minimal Library Management System – Frontend
 
 
  **About** : A TypeScript-based REST API backend for managing books and borrow records in a library system. Built with Express.js, MongoDB, and Zod for validation.
